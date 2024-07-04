@@ -1,0 +1,96 @@
+﻿<Window x:Class="kvalikRamil.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kvalikRamil"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="374*"/>
+            <RowDefinition Height="24*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" >
+            <TextBlock Text="1" Margin="3 0"
+               Foreground="Blue" 
+               TextDecorations="Underline"
+               MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
+            <TextBlock Text="2" Margin="3 0"
+                Foreground="Blue" 
+                TextDecorations="Underline"
+                MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
+            <TextBlock Text="3" Margin="3 0"
+                Foreground="Blue" 
+                TextDecorations="Underline"
+                MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
+            <TextBlock Text="4" Margin="3 0"
+                Foreground="Blue" 
+                TextDecorations="Underline"
+                MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
+            <TextBlock Text=">" 
+                Foreground="Blue" 
+                TextDecorations="Underline"
+                MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+            <TextBox x:Name="searchBox" Width="200" Height="35" FontSize="20" Foreground="Gray"
+             Text="Введите для поиска"
+             GotFocus="TextBox_GotFocus"
+             LostFocus="TextBox_LostFocus"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+            <ComboBox x:Name="comboBox" Width="200" Height="35" FontSize="20" SelectedIndex="0"
+              GotFocus="ComboBox_GotFocus"
+              LostFocus="ComboBox_LostFocus">
+                <ComboBoxItem IsEnabled="False">Сортировка</ComboBoxItem>
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name="comboBoxi" Width="200" Height="35" FontSize="20" SelectedIndex="0"
+              GotFocus="ComboBox_GotFocus"
+              LostFocus="ComboBox_LostFocus">
+                <ComboBoxItem IsEnabled="False">Фильтрация</ComboBoxItem>
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Margin="10" Grid.Row="1">
+
+            <ListView Width="750" Height="350" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Grid Width="700" Height="120">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Column="0" Source="/Assets/Images/picture.png" Margin="10"/>
+
+                                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Label Content="Тип продукта | Наименование продукта"/>
+                                    <Label Content="Артикул"/>
+                                    <Label Content="Материалы: материал1, материал2, материал3"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Label Content="{Binding Стоимость}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackPanel>
+    </Grid>
+</Window>
